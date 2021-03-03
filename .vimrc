@@ -265,9 +265,10 @@ set laststatus=2
 
 " colorschema
 colo solarized8
+set background=dark
 
 " fzf config
-map <leader>p :Files<CR>
+map <leader>f :Files<CR>
 map <leader>cd :Files
 map <leader>b :Buffers<CR>
 map <leader>h :History<CR>
