@@ -121,6 +121,15 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
+Plug 'vim-scripts/utl.vim'
+Plug 'tpope/vim-repeat'
+Plug 'yegappan/taglist'
+Plug 'preservim/tagbar'
+Plug 'chrisbra/NrrwRgn'
+Plug 'mattn/calendar-vim'
+Plug 'inkarkat/vim-SyntaxRange'
 call plug#end()
 
 " Customize setting
@@ -137,6 +146,7 @@ set autoread
 
 " Set mapleader
 let mapleader = " "
+let maplocalleader = ","
 
 " Fast editing of .vimrc
 map <silent> <leader>feR :source ~/.vimrc<cr>
