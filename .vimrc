@@ -243,7 +243,7 @@ endfunction
 imap <silent> <C-Y> <C-R><C-R>=LookUpwards()<CR>
 noremap <CR> :nohlsearch<CR>
 
-nmap <leader>f :!grep -rn <C-R><C-R>=expand("<cword>")<CR>
+nmap <leader>fg :!grep -rn <C-R><C-R>=expand("<cword>")<CR>
 
 set tws=15x0
 map <F5> :bel term<CR>
@@ -305,3 +305,12 @@ endif
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
