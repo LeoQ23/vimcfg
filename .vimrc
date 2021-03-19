@@ -130,6 +130,7 @@ Plug 'preservim/tagbar'
 Plug 'chrisbra/NrrwRgn'
 Plug 'mattn/calendar-vim'
 Plug 'inkarkat/vim-SyntaxRange'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Customize setting
@@ -148,8 +149,6 @@ set autoread
 let mapleader = " "
 let maplocalleader = ","
 
-" Fast editing of .vimrc
-map <silent> <leader>feR :source ~/.vimrc<cr>
 " Fast editing of .vimrc
 map <silent> <leader>fed :e ~/.vimrc<cr>
 " When .vimrc is edited, reload it
@@ -200,12 +199,9 @@ hi Normal ctermfg=255 ctermbg=none
 hi LineNr ctermfg=255 ctermbg=none
 let g:btransparent=1
 
-" show history list
-nmap <leader>lh :bro ol<cr>
 nmap bu :<C-U>execute 'buffer ' . v:count<CR>
 nmap bn :bn<cr>
 nmap bp :bp<cr>
-nmap <leader>lb :ls<cr>
 
 " set fdm=indent
 set autowrite
@@ -243,8 +239,6 @@ endfunction
 imap <silent> <C-Y> <C-R><C-R>=LookUpwards()<CR>
 noremap <CR> :nohlsearch<CR>
 
-nmap <leader>fg :!grep -rn <C-R><C-R>=expand("<cword>")<CR>
-
 set tws=15x0
 map <F5> :bel term<CR>
 
@@ -277,12 +271,18 @@ set laststatus=2
 colo solarized8
 set background=dark
 
+" grep find
+nmap <leader>fg :!grep -rn <C-R><C-R>=expand("<cword>")<CR>
 " fzf config
 map <leader>f :Files<CR>
 map <leader>cd :Files
 map <leader>b :Buffers<CR>
 map <leader>h :History<CR>
-map <leader>avm :Files $HOME/Project/avm<CR>
+map <leader>g :Commits<CR>
+map <leader>bg :BCommits<CR>
+map <leader>t :Tags <C-R><C-R>=expand("<cword>")<CR>
+map <leader>bt :BTags <C-R><C-R>=expand("<cword>")<CR>
+map <leader>nle :Files /mnt/d/Project/NLEPlatformPro_Git<CR>
 
 " ctags settings
 set tags=./.tags;$HOME
@@ -314,3 +314,5 @@ if executable(s:clip)
         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
     augroup END
 endif
+
+map <leader>jn :%!python3 -m json.tool<CR>
